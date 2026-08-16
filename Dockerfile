@@ -11,8 +11,9 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential libpq-dev curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install deps first so this layer is cached unless pyproject.toml changes
+# Install deps (requires package sources) so this layer is cached unless pyproject.toml changes
 COPY pyproject.toml ./
+COPY app ./app
 RUN pip install --upgrade pip && pip install .
 
 # Now copy the rest of the source
