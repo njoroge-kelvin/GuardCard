@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "app"
     API_V1_PREFIX: str = "/api/v1"
 
+    # Must use an async driver, e.g. postgresql+asyncpg://user:pass@host:5432/dbname
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/app"
+
     # Comma-separated list of allowed origins, e.g. "http://localhost:3000,https://example.com"
     BACKEND_CORS_ORIGINS: str = "*"
 
